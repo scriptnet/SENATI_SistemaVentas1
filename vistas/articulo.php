@@ -55,7 +55,13 @@ require 'header.php';
                           <div class="form-grup col-lg-6 col-md-6 col-xs-12" >
                             <label>codigo:</label>
                             
-                            <input type="text" class="form-control" name="codigo" id="codigo" maxlength="50" placeholder="codigo" required>
+                            <input type="text" class="form-control" name="codigo" id="codigo" maxlength="50" placeholder="código de barras" required>
+                            <button class="btn btn-success" type="button" onclick="generarbarcode()">Generar</button>
+                            <button class="btn btn-info" type="button"  onclick="imprimir()">Imprimir</button>
+                              <div id="print">
+                                <svg id="barcode"></svg>
+                                
+                              </div>
                           </div>
                           <div class="form-grup col-lg-6 col-md-6 col-xs-12" >
                             <label>nombre:</label>
@@ -65,12 +71,14 @@ require 'header.php';
                           <div class="form-grup col-lg-6 col-md-6 col-xs-12" >
                             <label>stock:</label>
                             
-                            <input type="text" class="form-control" name="stock" id="stock" maxlength="50" placeholder="stock" required>
+                            <input type="number" class="form-control" name="stock" id="stock" maxlength="50" placeholder="stock" required>
                           </div>
                           <div class="form-grup col-lg-6 col-md-6 col-xs-12" >
                             <label>imagen:</label>
-                          
-                            <input type="text" class="form-control" name="imagen" id="imagen" maxlength="50" placeholder="imagen" required>
+                            
+                            <input type="file" class="form-control" name="imagen" id="imagen" maxlength="50" placeholder="imagen" required>
+                            <input type="hidden" name="imagenactual" id="imagenactual">
+                            <img src="" width="150px" height="100px" id="imagenmuestra">
                           </div>
                           <div class="form-grup col-lg-6 col-md-6 col-xs-12" >
                             <label>Descripción:</label>
@@ -98,4 +106,7 @@ require 'header.php';
 <?php
 require 'footer.php';
 ?>
+<script type="text/javascript" src="scripts/articulo.js"></script>
+<script type="text/javascript" src="../public/js/JsBarcode.all.min.js"></script>
+<script type="text/javascript" src="../public/js/jquery.PrintArea.js"></script>
 <script type="text/javascript" src="scripts/articulo.js"></script>

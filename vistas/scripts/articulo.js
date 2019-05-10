@@ -14,6 +14,8 @@ function init(){
              $("#idcategoria").html(r); 
              $('#idcategoria').selectpicker('refresh'); 
  	});
+
+ 	
 }
 
 //Función limpiar
@@ -120,13 +122,22 @@ function mostrar(idarticulo){
 			console.log(data.imagen);
 			mostrarform(true);
 			$("#idcategoria").val(data.idcategoria);
+			$('idcategoria').selectpicker('refresh');
 			$("#codigo").val(data.codigo);
 			$("#nombre").val(data.nombre);
 			$("#stock").val(data.stock);
-			$("#imagen").val(data.imagen);
+
 			$("#descripcion").val(data.descripcion);
+
+			$("#imagenmuestra").show();
+			$("#imagenmuestra").attr("src","../files/articulos/"+data.imagen);
+			$("#imagenactual").val(data.imagen);
+			
 			$("#idarticulo").val(data.idarticulo);
+
+			generarbarcode();
 		});
+
 };
 
 function desactivar(idarticulo){
@@ -149,4 +160,19 @@ function activar(idarticulo){
 		}
 	})
 }
+
+function generarbarcode()
+{
+	codigo=$("#codigo").val();
+	JsBarcode("#barcode",codigo);
+	$("#print").show();
+
+	//$("#idarticulo").val(data.idarticulo);
+ 		//generarbarcode();
+}
+
+function imprimir(){
+	$("#print").printArea();
+}
+
 init();
